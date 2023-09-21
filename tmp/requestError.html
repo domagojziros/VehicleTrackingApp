@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Log in - VehicleManagementUnified</title>
+
+    
+        <link rel="stylesheet" href="/Identity/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="/Identity/css/site.css" />
+    
+    
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand" href="/">VehicleManagementUnified</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+
+
+<ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link text-dark" href="/Identity/Account/Register?returnUrl=%2FIdentity%2FUpdateUserRole%3FuserId%3Dd30b103f-fa49-4ccf-8514-791ed65ecf28%26role%3DBasicUser">Register</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-dark" href="/Identity/Account/Login?returnUrl=%2FIdentity%2FUpdateUserRole%3FuserId%3Dd30b103f-fa49-4ccf-8514-791ed65ecf28%26role%3DBasicUser">Login</a>
+        </li>
+</ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        
+        <main role="main" class="pb-1">
+            
+
+
+<h1>Log in</h1>
+<div class="row">
+    <div class="col-md-4">
+        <section>
+            <form id="account" method="post">
+                <h2>Use a local account to log in.</h2>
+                <hr />
+                
+                <div class="form-floating mb-3">
+                    <input class="form-control" autocomplete="username" aria-required="true" placeholder="name@example.com" type="email" data-val="true" data-val-email="The Email field is not a valid e-mail address." data-val-required="The Email field is required." id="Input_Email" name="Input.Email" value="" />
+                    <label class="form-label" for="Input_Email">Email</label>
+                    <span class="text-danger field-validation-valid" data-valmsg-for="Input.Email" data-valmsg-replace="true"></span>
+                </div>
+                <div class="form-floating mb-3">
+                    <input class="form-control" autocomplete="current-password" aria-required="true" placeholder="password" type="password" data-val="true" data-val-required="The Password field is required." id="Input_Password" name="Input.Password" />
+                    <label class="form-label" for="Input_Password">Password</label>
+                    <span class="text-danger field-validation-valid" data-valmsg-for="Input.Password" data-valmsg-replace="true"></span>
+                </div>
+                <div class="checkbox mb-3">
+                    <label class="form-label" for="Input_RememberMe">
+                        <input class="form-check-input" type="checkbox" data-val="true" data-val-required="The Remember me? field is required." id="Input_RememberMe" name="Input.RememberMe" value="true" />
+                        Remember me?
+                    </label>
+                </div>
+                <div>
+                    <button id="login-submit" type="submit" class="w-100 btn btn-lg btn-primary">Log in</button>
+                </div>
+                <div>
+                    <p>
+                        <a id="forgot-password" href="/Identity/Account/ForgotPassword">Forgot your password?</a>
+                    </p>
+                    <p>
+                        <a href="/Identity/Account/Register?returnUrl=%2FIdentity%2FUpdateUserRole%3FuserId%3Dd30b103f-fa49-4ccf-8514-791ed65ecf28%26role%3DBasicUser">Register as a new user</a>
+                    </p>
+                    <p>
+                        <a id="resend-confirmation" href="/Identity/Account/ResendEmailConfirmation">Resend email confirmation</a>
+                    </p>
+                </div>
+            <input name="__RequestVerificationToken" type="hidden" value="CfDJ8MvXrCJRQSFMsbypXV6Cs4mRQW3c1XajmFrCT_3YVU0WrGnhnN_5jq35P_oKI2i4RJJRIwfqbIwAKjtDLCkqPnWl7jPcZu1HnhZNGCnINwG3tgyXTx23zRVupr2B8oICK7sS62teTcSKKRbbFfAY14k" /><input name="Input.RememberMe" type="hidden" value="false" /></form>
+        </section>
+    </div>
+    <div class="col-md-6 col-md-offset-2">
+        <section>
+            <h3>Use another service to log in.</h3>
+            <hr />
+                    <div>
+                        <p>
+                            There are no external authentication services configured. See this <a href="https://go.microsoft.com/fwlink/?LinkID=532715">article
+                            about setting up this ASP.NET application to support logging in via external services</a>.
+                        </p>
+                    </div>
+        </section>
+    </div>
+</div>
+
+
+        </main>
+    </div>
+    <footer class="footer border-top pl-3 text-muted">
+        <div class="container">
+        &copy; 2023 - VehicleManagementUnified
+        </div>
+    </footer>
+
+    
+        <script src="/Identity/lib/jquery/dist/jquery.js"></script>
+        <script src="/Identity/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
+        <script src="/Identity/js/site.js?v=4q1jwFhaPaZgr8WAUSrux6hAuh0XDg9kPS3xIVq36I0"></script>
+    
+    
+
+    
+    
+    <script src="/Identity/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="/Identity/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+
+
+
+
+</body>
+</html>

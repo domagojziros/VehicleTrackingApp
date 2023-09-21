@@ -1,0 +1,15 @@
+<p-toolbar>
+  <div class="p-toolbar-group-start"></div>
+
+  <div class="p-toolbar-group-center"></div>
+
+  <div class="p-toolbar-group-end" *ngIf="isAuthenticated | async">
+      <p-button [routerLink]='["/authentication/profile"]' styleClass="p-button-success mr-2" label="Profile"></p-button>
+      <p-button [routerLink]='["/authentication/logout"]' styleClass="p-button-danger mr-2" label="Log out" [state]='{ local: true }' ></p-button>
+  </div>
+
+  <div class="p-toolbar-group-end" *ngIf="(isAuthenticated | async) !== true">
+      <p-button [routerLink]='["/authentication/register"]' label="Register" class="mr-2"></p-button>
+      <p-button [routerLink]='["/authentication/login"]' styleClass="p-button-secondary mr-2" label="Login"></p-button>
+  </div>
+</p-toolbar>

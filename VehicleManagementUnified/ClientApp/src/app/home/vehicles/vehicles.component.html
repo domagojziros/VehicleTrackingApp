@@ -1,0 +1,66 @@
+<!-- vehicles.component.html -->
+<div class="vehicles-container">
+  <div class="vehicles-header">
+    <h3>Vehicles</h3>
+    <button pButton type="button" icon="pi pi-plus" label="Add" class="my-button" (click)="addVehicle()"></button>
+    <button pButton type="button" icon="pi pi-download" label="Export" class="my-button" (click)="exportVehicles()"></button>
+  </div>
+
+  <div class="vehicles-search">
+    <span class="pi pi-search search-icon"></span>
+    <input type="text" pInputText placeholder="Search" (keyup)="onSearch($event)">
+  </div>
+
+  <!-- Add/Edit Vehicle Form -->
+  <div *ngIf="showAddForm || showEditForm" class="card vehicle-form">
+    <h4>{{ showEditForm ? 'Edit Vehicle' : 'Add New Vehicle' }}</h4>
+    <form (ngSubmit)="saveNewVehicle()">
+      <div class="form-group">
+        <label for="model">Model:</label>
+        <input type="text" id="model" name="model" [(ngModel)]="newVehicle.model" required>
+      </div>
+      <div class="form-group">
+        <label for="registrationNumber">Registration Number:</label>
+        <input type="text" id="registrationNumber" name="registrationNumber" [(ngModel)]="newVehicle.registrationNumber" required>
+      </div>
+      <div class="form-group">
+        <label for="productionYear">Production Year:</label>
+        <input type="number" id="productionYear" name="productionYear" [(ngModel)]="newVehicle.productionYear">
+      </div>
+      <div class="form-group">
+        <label for="maxLoadCapacity">Max Load Capacity:</label>
+        <input type="number" id="maxLoadCapacity" name="maxLoadCapacity" [(ngModel)]="newVehicle.maxLoadCapacity">
+      </div>
+      <div class="form-group">
+        <label for="driver">Driver:</label>
+        <p-dropdown id="driver" name="driver" [options]="drivers" [(ngModel)]="newVehicle.driver" optionLabel="name"></p-dropdown>
+      </div>
+      <div class="form-group">
+        <label for="location">Location:</label>
+        <p-dropdown id="location" name="location" [options]="locations" [(ngModel)]="newVehicle.location" optionLabel="name"></p-dropdown>
+      </div>
+
+      <!-- You can add more form fields for other vehicle properties if needed -->
+      <div class="form-actions">
+        <button type="submit" class="p-button p-button-success" [disabled]="!newVehicle.model || !newVehicle.registrationNumber">{{ showEditForm ? 'Save Changes' : 'Save' }}</button>
+        <button type="button" class="p-button p-button-secondary" (click)="cancelAddNewVehicle()">Cancel</button>
+      </div>
+    </form>
+  </div>
+
+  <p-dataView [value]="filteredVehicles">
+    <ng-template let-vehicle pTemplate="listItem">
+      <div class="vehicle-item">
+        <div class="vehicle-info">
+          <div class="vehicle-name">{{ vehicle.model }}</div>
+          <div class="vehicle-details">{{ vehicle.registrationNumber }}</div>
+        </div>
+
+        <div class="vehicle-actions">
+          <button pButton icon="pi pi-pencil" (click)="onEdit(vehicle)"></button>
+          <button pButton icon="pi pi-trash" (click)="onDelete(vehicle)"></button>
+        </div>
+      </div>
+    </ng-template>
+  </p-dataView>
+ </div>

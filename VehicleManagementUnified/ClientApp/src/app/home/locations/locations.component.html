@@ -1,0 +1,62 @@
+<div class="locations-container">
+  <div class="locations-header">
+    <h3>Locations</h3>
+    <button pButton type="button" icon="pi pi-plus" label="Add" class="my-button" (click)="addLocation()"></button>
+    <button pButton type="button" icon="pi pi-download" label="Export" class="my-button" (click)="exportLocations()"></button>
+  </div>
+  <div class="locations-content">
+    <!-- Add/Edit Location Form -->
+    <div *ngIf="showAddForm || showEditForm" class="location-form">
+      <h4>{{ showEditForm ? 'Edit Location' : 'Add New Location' }}</h4>
+      <form (ngSubmit)="saveNewLocation()">
+        <div class="form-group">
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name" [(ngModel)]="newLocation.name" required>
+        </div>
+        <div class="form-group">
+          <label for="address">Address:</label>
+          <input type="text" id="address" name="address" [(ngModel)]="newLocation.address" required>
+        </div>
+        <div class="form-group">
+          <label for="locationX">Location X:</label>
+          <input type="number" id="locationX" name="locationX" [(ngModel)]="newLocation.locationX" required>
+        </div>
+        <div class="form-group">
+          <label for="locationY">Location Y:</label>
+          <input type="number" id="locationY" name="locationY" [(ngModel)]="newLocation.locationY" required>
+        </div>
+        <!-- You can add more form fields for other location properties if needed -->
+        <div class="form-actions">
+          <button type="submit" class="p-button p-button-success" [disabled]="!newLocation.address || !newLocation.locationX || !newLocation.locationY">{{ showEditForm ? 'Save Changes' : 'Save' }}</button>
+          <button type="button" class="p-button p-button-secondary" (click)="cancelAddNewLocation()">Cancel</button>
+        </div>
+      </form>
+    </div>
+    
+    <div class="location-groups">
+      <label><input type="checkbox"> Group 1</label>
+      <label><input type="checkbox"> Group 2</label>
+      <label><input type="checkbox"> Group 3</label>
+    </div>
+    <div class="locations-list">
+      <div class="locations-search">
+        <span class="pi pi-search search-icon"></span>
+        <input type="text" pInputText placeholder="Search" (keyup)="onSearch($event)">
+      </div>
+      <p-dataView [value]="filteredLocations">
+        <ng-template let-location pTemplate="listItem">
+          <div class="location-item">
+            <div class="location-info">
+              <div class="location-name">{{ location.name }}</div>
+              <div class="location-details">{{ location.address }}</div>
+            </div>
+            <div class="location-actions">
+              <button pButton icon="pi pi-pencil" (click)="onEdit(location)"></button>
+              <button pButton icon="pi pi-trash" (click)="onDelete(location)"></button>
+            </div>
+          </div>
+        </ng-template>
+      </p-dataView>
+    </div>
+  </div>
+</div>

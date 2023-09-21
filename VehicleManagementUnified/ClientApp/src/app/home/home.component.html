@@ -1,0 +1,29 @@
+<div class="flex app-container" *ngIf="this.tokenService.getToken() && (this.isAuthorized$ | async)">
+  <div class="col" style="height: 100vh; width: 25vw;">
+    <p-menubar>
+      <ng-template pTemplate="start">
+        <div>MAP OVERVIEW</div>
+      </ng-template>
+      <ng-template pTemplate="end">
+        <i class="pi pi-bars"></i>
+      </ng-template>
+    </p-menubar>
+
+    <p-tabView>
+      <p-tabPanel header="VEHICLES">
+        <app-vehicles></app-vehicles>
+      </p-tabPanel>
+      <p-tabPanel header="LOCATIONS">
+        <app-locations></app-locations>
+      </p-tabPanel>
+      <p-tabPanel header="TRACK">
+        <app-history></app-history>
+      </p-tabPanel>
+    </p-tabView>
+  </div>
+
+  <p-divider layout="vertical"></p-divider>
+
+  <app-map id="arcgisMapViewContainer"></app-map>
+
+</div>

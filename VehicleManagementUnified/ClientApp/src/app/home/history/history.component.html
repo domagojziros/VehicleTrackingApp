@@ -1,0 +1,88 @@
+<div class="history-container">
+  <div class="history-header">
+    <h4>Check location</h4>
+  </div>
+
+  <div class="history-content">
+    <div class="history-list">
+      <h6>By Driver:</h6>
+
+
+      <div class="search-container">
+        <span class="pi pi-search search-icon"></span>
+        <input type="text" pInputText placeholder="Search" (keyup)="onSearchDriver($event)">
+      </div>
+
+
+      <p-dataView [value]="filteredDrivers">
+        <ng-template let-driver pTemplate="listItem">
+          <div class="list-item">
+            <div class="list-info">
+              <div class="list-name">{{ driver.name }}</div>
+            </div>
+      
+            <div class="list-actions">
+              <button pButton icon="pi pi-search" (click)="onTrackDriver(driver)"></button>
+            </div>
+          </div>
+        </ng-template>
+      </p-dataView>
+
+    </div>
+    <p-dialog header="Header" [(visible)]="this.dialogTrackDriverVisible" [style]="{ width: '50vw' }">
+      <ng-template pTemplate="header">
+        <span class="text-xl font-bold">Location history for driver: {{ this.currTrackedDriver?.name }}</span>
+      </ng-template>
+
+      <!-- Display location and time -->
+      <p *ngFor="let currLocation of this.driverLocationsArray">
+        {{ currLocation.address }} at {{ currLocation.time | date:'short' }}
+      </p>
+
+      <ng-template pTemplate="footer">
+        <p-button icon="pi pi-check" (click)="this.dialogTrackDriverVisible = false; this.driverLocationsArray = []; this.currTrackedDriver = null;" label="Ok" styleClass="p-button-text"></p-button>
+      </ng-template>
+    </p-dialog>
+
+    <div class="history-list">
+      <h6>By Vehicle:</h6>
+
+      <div class="search-container">
+        <span class="pi pi-search search-icon"></span>
+        <input type="text" pInputText placeholder="Search" (keyup)="onSearchVehicle($event)">
+      </div>
+
+      <p-dataView [value]="filteredVehicles">
+        <ng-template let-vehicle pTemplate="listItem">
+          <div class="list-item">
+            <div class="list-info">
+              <div class="list-name">{{ vehicle.model }} ({{ vehicle.registrationNumber }})</div>
+            </div>
+
+            <div class="list-actions">
+              <button pButton icon="pi pi-search" (click)="onTrackVehicle(vehicle)"></button>
+            </div>
+          </div>
+
+        </ng-template>
+      </p-dataView>
+
+    </div>
+    <p-dialog header="Header" [(visible)]="this.dialogTrackVehicleVisible" [style]="{ width: '50vw' }">
+      <ng-template pTemplate="header">
+        <span class="text-xl font-bold">Location history for vehicle: {{ this.currTrackedVehicle?.model }} ({{ this.currTrackedVehicle?.registrationNumber }})</span>
+      </ng-template>
+
+      <!-- Display location, time and driver -->
+      <p *ngFor="let currVehicle of this.vehicleLocationsArray">
+        {{ currVehicle.location?.address }} at {{ currVehicle.location?.time | date:'short' }} driven by {{ currVehicle.driver?.name }}
+      </p>
+
+      <ng-template pTemplate="footer">
+        <p-button icon="pi pi-check" (click)="this.dialogTrackVehicleVisible = false; this.vehicleLocationsArray = []; this.currTrackedVehicle = null;" label="Ok" styleClass="p-button-text"></p-button>
+      </ng-template>
+    </p-dialog>
+
+
+  </div>
+</div>

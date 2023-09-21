@@ -1,0 +1,95 @@
+﻿@page
+@using VehicleManagementUnified;
+@model ManageUserRolesModel
+@{
+    ViewData["Title"] = "Manage User Roles";
+    ViewData["ActivePage"] = ManageNavPages.ManageUserRoles;
+
+    if(Model.successfulPOST)
+    {
+        Model.successfulPOST = false;
+        // Model.SelectedUserId = "null";
+        // Model.SelectedRole = "null";
+
+        // <script>
+        //     alert("User successfully updated!");
+        // </script>
+
+        <p>User successfully updated!</p>
+    }
+}
+
+<h3>@ViewData["Title"]</h3>
+
+<form id="manage-user-roles-form" asp-page="ManageUserRoles" method="post">
+    <div>
+        <label for="userSelector" style="display: none;">Select a User:</label>
+        <select id="userSelector" asp-for="SelectedUserId" class="form-control">
+            <option value="null">Select User</option>
+            @foreach (var currUser in Model.Users)
+            {
+                // Check if the user is not the currently logged-in user
+                // and is not in the "Administrator" role
+                if (currUser.Id != Model.currentUser.Id && !await Model.userManager.IsInRoleAsync(currUser, SharedData.ADMINISTRATOR_ROLE))
+                {
+                    <option value="@currUser.Id">@currUser.UserName</option>
+                }
+            }
+        </select>
+    </div>
+
+    <div id="roleSelectorDiv" style="display: none;">
+@*         @if(Model.SelectedUserId != null)
+        {
+            <p>Current User Role: @Model.user2Roles[Model.SelectedUserId][0]</p>
+        } *@
+        <label for="role">Select a Role:</label>
+        <select id="roleSelector" asp-for="SelectedRole" class="form-control">
+            <option value="null">Select a role</option>
+            <option value="Administrator">Administrator</option>
+            <option value="BasicUser">Basic User</option>
+            <option value="VerifiedUser">Verified User</option>
+        </select>
+    </div>
+
+    <button id="saveButton" class="btn btn-primary" style="display: none;">Save</button>
+</form>
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        $(document).ready(function () {
+            // Get the values of SelectedUserId and SelectedRole from your model
+            // var selectedUserId = '@Model.SelectedUserId';
+            // var selectedRole = '@Model.SelectedRole';
+
+            // // Set the value of the userSelector element
+            // $('#userSelector').val(selectedUserId);
+
+            // // Set the value of the roleSelector element
+            // $('#roleSelector').val(selectedRole);
+
+            $("#roleSelector").change(function () {
+                const selectedRole = $(this).val();
+                if (selectedRole && selectedRole !== "null") {
+                    $("#saveButton").show();
+                } else {
+                    $("#saveButton").hide();
+                }
+            });
+
+            $("#userSelector").change(function () {
+                const selectedUserId = $(this).val();
+                if (selectedUserId && selectedUserId !== "null") {
+                    $("#roleSelectorDiv").show();
+                    $('#roleSelector').trigger('change');
+                } else {
+                    $("#roleSelectorDiv").hide();
+                    $("#saveButton").hide();
+                    return;
+                }
+            }).trigger('change');
+        });
+    </script>
+}

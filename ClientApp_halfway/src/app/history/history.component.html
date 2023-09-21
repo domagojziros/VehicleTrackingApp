@@ -1,0 +1,46 @@
+<div class="history-container">
+  <div class="history-header">
+    <h3>Track Location History</h3>
+  </div>
+  <div class="history-content">
+    <div class="history-list">
+      <h4>By Driver:</h4>
+      <div class="search-container">
+        <span class="pi pi-search search-icon"></span>
+        <input type="text" pInputText placeholder="Search" (keyup)="onSearchDriver($event)">
+      </div>
+      <p-dataView [value]="filteredDrivers">
+        <ng-template let-driver pTemplate="listItem">
+          <div class="list-item">
+            <div class="list-info">
+              <div class="list-name">{{ driver.name }}</div>
+            </div>
+            <div class="list-actions">
+              <button pButton icon="pi pi-search" (click)="onTrackDriver(driver)"></button>
+            </div>
+          </div>
+        </ng-template>
+      </p-dataView>
+    </div>
+
+    <div class="history-list">
+      <h4>By Vehicle:</h4>
+      <div class="search-container">
+        <span class="pi pi-search search-icon"></span>
+        <input type="text" pInputText placeholder="Search" (keyup)="onSearchVehicle($event)">
+      </div>
+      <p-dataView [value]="filteredVehicles">
+        <ng-template let-vehicle pTemplate="listItem">
+          <div class="list-item">
+            <div class="list-info">
+              <div class="list-name">{{ vehicle.model }} ({{ vehicle.registrationNumber }})</div>
+            </div>
+            <div class="list-actions">
+              <button pButton icon="pi pi-search" (click)="onTrackVehicle(vehicle)"></button>
+            </div>
+          </div>
+        </ng-template>
+      </p-dataView>
+    </div>
+  </div>
+</div>

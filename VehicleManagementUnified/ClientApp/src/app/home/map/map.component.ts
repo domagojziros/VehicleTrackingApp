@@ -16,12 +16,14 @@ import MapView from '@arcgis/core/views/MapView';
 export class MapComponent {
 
   view!: MapView;
+  isSidebarOpen = false;
 
   constructor(
     private locationService: LocationService
   ) {
 
   }
+
 
   ngOnInit() {
     config.apiKey = "AAPK8636e303b15f4645b8e9738091fff655X4_HN5iSSAhP3OyfrLRqEtFUyQwX94dmLV_1D017_7fZ7E55g3zbCT3Nku2tlZ0T";
@@ -33,7 +35,7 @@ export class MapComponent {
     this.view = new MapView({
         container: 'arcgisMapView',
         map: map,
-        center: [17.815399, 42.266568],
+        center: [18.815399, 44.866568],
         zoom: 7.4
     });
 
@@ -65,4 +67,10 @@ export class MapComponent {
 
     this.view.graphics.add(pointGraphic);
   }
+
+  toggleSidebar() {
+    this.isSidebarOpen = !this.isSidebarOpen;
+    this.view.container.classList.toggle('sidebar-mode', this.isSidebarOpen);
+  }
+
 }

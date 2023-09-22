@@ -1,6 +1,10 @@
-#arcgisMapView {
-  padding: 0;
-  margin: 0;
-  height: 100%;
-  width: 100%;
+
+.map-container {
+  height: 100%; /* Initially take full height */
+  transition: width 0.3s; /* Add smooth transition for width change */
+  /* Other map styles */
+
+  &.sidebar-mode {
+    width: 0; /* When in sidebar mode, make width 0 */
+  }
 }

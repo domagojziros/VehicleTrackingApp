@@ -53,5 +53,5 @@ jobs:
         with:
           app-name: 'VehicleManagementUnified'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_D18552B3B384462DAC70432FC768FEFC }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_38312A2E89F3414FBD73DD2B7D4A2D1D }}
           package: .

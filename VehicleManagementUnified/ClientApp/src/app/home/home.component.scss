@@ -2,11 +2,13 @@
   display: inline-flex;
   width: auto;
 }
-
-#arcgisMapViewContainer {
-  padding: 0;
-  margin: 0;
-  height: 100%;
-  width: 75%;
+.list {
+  width: 300px;
+  @media (max-width: 800px) {
+    width: auto;
+    margin-bottom: 12px
+  }
 }
+
+
 

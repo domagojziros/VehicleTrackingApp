@@ -1,5 +1,6 @@
-<div class="flex app-container" *ngIf="this.tokenService.getToken() && (this.isAuthorized$ | async)">
-  <div class="col" style="height: 100vh; flex: 0 0 25vw; max-width: 25vw;">
+
+<div class="app-container"  *ngIf="this.tokenService.getToken() && (this.isAuthorized$ | async)">
+  <div class="list">
     <p-menubar class="fit-menu-bar">
       <ng-template pTemplate="start">
         <div>MAP OVERVIEW</div>
@@ -21,9 +22,6 @@
       </p-tabPanel>
     </p-tabView>
   </div>
-
-  <p-divider layout="vertical"></p-divider>
-
-  <app-map id="arcgisMapViewContainer" class="map-container"></app-map>
-
+  <div style="flex-grow: 1; margin:12px"><app-map></app-map></div>
 </div>
+

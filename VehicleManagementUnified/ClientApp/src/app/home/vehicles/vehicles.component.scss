@@ -1,3 +1,32 @@
+.vehicles-search {
+  /* Existing styles */
+
+  @media (max-width: 768px) {
+    /* Adjust styles for smaller screens */
+    display: block; /* Display as block on smaller screens */
+    margin-bottom: 10px; /* Add some margin at the bottom */
+  }
+
+  input {
+    /* Existing styles */
+
+    @media (max-width: 768px) {
+      /* Adjust styles for smaller screens */
+      width: 100%; /* Take full width on smaller screens */
+    }
+  }
+}
+
+.vehicle-actions {
+  /* Existing styles */
+
+  @media (max-width: 768px) {
+    /* Adjust styles for smaller screens */
+    margin-top: 10px; /* Add margin at the top */
+  }
+}
+
+
 
 .vehicles-search {
     display: flex;
@@ -52,12 +81,6 @@
     align-items: center;
   }
 
-  .vehicle-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
   .vehicle-info {
     flex-grow: 1;
   }
@@ -81,6 +104,12 @@
   margin-bottom: 10px; /* Add some margin between items */
 }
 
-
+/* Add media query for responsiveness */
+@media (max-width: 768px) {
+  /* Adjust styles for smaller screens */
+  .vehicle-item {
+    flex-direction: column; /* Change to a column layout */
+  }
+}
 
 

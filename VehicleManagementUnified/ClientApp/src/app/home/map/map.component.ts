@@ -21,11 +21,15 @@ export class MapComponent {
   constructor(
     private locationService: LocationService
   ) {
-
+    
   }
 
 
-  ngOnInit() {
+
+
+ngOnInit() {
+  
+
     config.apiKey = "AAPK8636e303b15f4645b8e9738091fff655X4_HN5iSSAhP3OyfrLRqEtFUyQwX94dmLV_1D017_7fZ7E55g3zbCT3Nku2tlZ0T";
 
     const map = new Map({
@@ -68,9 +72,5 @@ export class MapComponent {
     this.view.graphics.add(pointGraphic);
   }
 
-  toggleSidebar() {
-    this.isSidebarOpen = !this.isSidebarOpen;
-    this.view.container.classList.toggle('sidebar-mode', this.isSidebarOpen);
-  }
 
 }

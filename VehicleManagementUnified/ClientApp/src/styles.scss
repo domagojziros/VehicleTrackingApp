@@ -27,8 +27,14 @@ body {
 }
 
 .app-container {
-  width: 100vw;
-  height: 90vh;
+  display: flex;
+  flex-direction: row;
+
+  flex-grow: 1;
+  @media (max-width: 800px) {
+    display: flex;
+    flex-direction: column
+  }
 }
 
 .my-button {

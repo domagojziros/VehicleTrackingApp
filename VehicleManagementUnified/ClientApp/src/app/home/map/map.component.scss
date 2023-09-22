@@ -1,10 +1,3 @@
-
 .map-container {
-  height: 100%; /* Initially take full height */
-  transition: width 0.3s; /* Add smooth transition for width change */
-  /* Other map styles */
-
-  &.sidebar-mode {
-    width: 0; /* When in sidebar mode, make width 0 */
-  }
+ height: 400px;
 }

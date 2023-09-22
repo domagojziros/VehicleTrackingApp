@@ -150,7 +150,6 @@ namespace VehicleManagementUnified
             //app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseRouting();
-
             app.UseCookiePolicy(new CookiePolicyOptions
             {
                 MinimumSameSitePolicy = SameSiteMode.None,
@@ -175,6 +174,7 @@ namespace VehicleManagementUnified
             app.UseAuthentication();
             app.UseIdentityServer();
             app.UseAuthorization();
+            
 
             app.UseEndpoints(endpoints =>
             {

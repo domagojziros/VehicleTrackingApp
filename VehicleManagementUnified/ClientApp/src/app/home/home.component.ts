@@ -16,7 +16,7 @@ export class HomeComponent implements OnInit {
   locations: Location[] = []; // Initialize locations as an array of Location
 
   isAuthorized$: Observable<boolean>;
-
+ 
   @ViewChild('arcgisMapViewContainer') mapComponent!: MapComponent;
 
   constructor(
